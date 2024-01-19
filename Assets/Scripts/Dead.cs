@@ -7,6 +7,8 @@ public class Dead : MonoBehaviour
 {
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] AudioSource deadSound;
+    [SerializeField] AudioSource hitSound;
     Vector3 RespawnPoint;
     // Start is called before the first frame update
     void Start()
@@ -28,7 +30,7 @@ public class Dead : MonoBehaviour
             if (animator.GetBool("runDead"))
             {
                 animator.SetBool("runDead", false);
-                
+
 
             }
             rb.bodyType = RigidbodyType2D.Static;
@@ -37,6 +39,7 @@ public class Dead : MonoBehaviour
         else if (collision.CompareTag("dauQuaiVat"))
         {
             Destroy(collision.transform.parent.gameObject);
+            hitSound.Play();
             Debug.Log("Ddang chay");
         }
 
@@ -55,8 +58,17 @@ public class Dead : MonoBehaviour
         else
         {
             transform.position = RespawnPoint;
-            animator.SetBool("runDead", true);
+            
             rb.bodyType = RigidbodyType2D.Dynamic;
+            deadSound.Stop();
+        }
+        animator.SetBool("runDead", true);
+    }
+    public void soundDead()
+    {
+        if (!animator.GetBool("runDead"))
+        {
+            deadSound.Play();
         }
 
     }

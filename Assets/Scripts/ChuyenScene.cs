@@ -11,7 +11,7 @@ public class ChuyenScene : MonoBehaviour
     }
     public void thoat() 
     {
-    
+    Application.Quit();
     }
    
 }
