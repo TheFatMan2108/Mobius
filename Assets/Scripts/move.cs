@@ -5,17 +5,22 @@ using UnityEngine;
 
 public class move : MonoBehaviour
 {
+    
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
-    [SerializeField] private AudioSource jumpSound;
-    [SerializeField] private AudioSource coinSound;
-    [SerializeField] private AudioSource walkSound;
-    float tocDo = 5f;
+
+    public static float huong;
+
+     float tocDo = 5f;
     float nhayCao = 16f;
     float ngang;
     bool chamDat;
     int doubleJump = 2;
 
+    private void Awake()
+    {
+       
+    }
     void Start()
     {
 
@@ -24,6 +29,7 @@ public class move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        huong = transform.localScale.x;
         ngang = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(ngang * tocDo, rb.velocity.y);
         Flip();
@@ -34,8 +40,8 @@ public class move : MonoBehaviour
             animator.SetBool("isJump", true);
             rb.velocity = new Vector2(rb.velocity.x, nhayCao);
             doubleJump--;
-            jumpSound.Play();
-            Debug.Log(doubleJump + "");
+            AudioManager.instance.PlaySFX("jump");
+           
         }
     }
 
@@ -52,7 +58,7 @@ public class move : MonoBehaviour
     {
         if (ngang == 0)
         {
-            walkSound.Stop();
+            
             animator.SetBool("isRun", false);
         }
         else
@@ -78,11 +84,11 @@ public class move : MonoBehaviour
         {
             UI_Mananger.diem_ += 200;
             Destroy(collision.gameObject);
-            coinSound.Play();
+            AudioManager.instance.PlaySFX("coin");
         }
     }
     public void walking()
     {
-        walkSound.Play();
+        AudioManager.instance.PlaySFX("walk");
     }
 }

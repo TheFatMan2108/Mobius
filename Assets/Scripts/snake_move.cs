@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class snake_move : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
+    
     float tocDo = 3f;
     float ngang;
 

@@ -11,6 +11,8 @@ TagManager:
   - Moster
   - trigger
   - dauQuaiVat
+  - Sound
+  - Bullet
   layers:
   - Default
   - TransparentFX
