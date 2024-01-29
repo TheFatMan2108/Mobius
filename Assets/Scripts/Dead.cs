@@ -8,11 +8,13 @@ public class Dead : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] GameObject DeathScene;
-    Vector3 RespawnPoint;
+   private Vector3 RespawnPoint;
+    public static int ran;
     // Start is called before the first frame update
     void Start()
     {
         RespawnPoint = transform.position;
+        ran = 0;
     }
 
     private void Update()
@@ -39,6 +41,7 @@ public class Dead : MonoBehaviour
             Destroy(collision.transform.parent.gameObject);
             AudioManager.instance.PlaySFX("hit");
             UI_Mananger.diem_ += 300;
+            ran++;
             Debug.Log("Ddang chay");
         }
 

@@ -11,7 +11,7 @@ public class ChuyenScene : MonoBehaviour
  
     public void batDau()
     {
-        SceneManager.LoadScene("LV1");       
+        SceneManager.LoadScene("LV1");  
     }
     public void thoat() 
     {

@@ -17,6 +17,7 @@ public class UI_Mananger : MonoBehaviour
         {
             mang_ = 3;
             diem_ = 0;
+            PlayerPrefs.DeleteKey(nextScene1.KEY_SNAKES);
         }
         else
         {

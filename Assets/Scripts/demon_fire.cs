@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveBullet : MonoBehaviour
+public class demon_fire : MonoBehaviour
 {
-   
 
-    public void destroy()
+    public void Destroy()
     {
         Destroy(gameObject);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("nenDat")||collision.CompareTag("Moster"))
+        if (collision.CompareTag("Bullet"))
         {
-            destroy();
+            Destroy(collision.gameObject);
         }
     }
 }

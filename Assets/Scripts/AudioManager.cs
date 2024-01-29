@@ -15,11 +15,13 @@ public class AudioManager : MonoBehaviour
     public AudioSource MBG_temp;
     [SerializeField] private AudioSource SFX;
     public AudioSource SFX_temp;
+   
     
  
 
     private void Awake()
     {
+        
         if (instance == null)
         {
             instance = this;
@@ -31,8 +33,10 @@ public class AudioManager : MonoBehaviour
         }
 
         MBGs.Add(new Sound(soundName[0], Sounds[0]));
-        for (int i = 1; i < Sounds.Length; i++)
+        MBGs.Add(new Sound(soundName[1], Sounds[1]));
+        for (int i = 2; i < Sounds.Length; i++)
         {
+            
             SFXs.Add(new Sound(soundName[i], Sounds[i]));
         }
         MBG_temp = MBG;

@@ -49,7 +49,7 @@ public class BuyScript : MonoBehaviour
             var thongbao = Instantiate(thongBao,Vector3.zero,Quaternion.identity,tF);
             thongbao.transform.position = new Vector3(0f,4f);
             AudioManager.instance.PlaySFX("Wrong");
-            Destroy(thongbao,5);
+            Destroy(thongbao,3);
             return;
         }else if (UI_Mananger.diem_ >= weapon.priceWeapon)
         {

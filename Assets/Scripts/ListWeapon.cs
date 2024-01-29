@@ -31,8 +31,10 @@ public class ListWeapon : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
         {
-
-            Instantiate(newWeapon(weaponList[UnityEngine.Random.Range(0,weaponList.Count)]), transform);
+            int indexOlb = UnityEngine.Random.Range(0, weaponList.Count);
+            Instantiate(newWeapon(weaponList[indexOlb]), transform); ;
+            weaponList.Remove(weaponList[indexOlb]);
+          
         }
 
     }
@@ -44,7 +46,7 @@ public class ListWeapon : MonoBehaviour
 
     private int randomPrice()
     {
-       return UnityEngine.Random.Range(6000, 8000);
+       return UnityEngine.Random.Range(2000, 8000);
     }
 
     private GameObject newWeapon(Weapon weapon)

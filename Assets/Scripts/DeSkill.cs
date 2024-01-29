@@ -10,6 +10,7 @@ public class DeSkill : MonoBehaviour
     {
         Destroy(gameObject);
         SpawnWeapon.casSkill = false;
+       
     }
 
    public void SpawnBulet()

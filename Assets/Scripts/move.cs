@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class move : MonoBehaviour
 {
-    
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
 
@@ -17,14 +16,6 @@ public class move : MonoBehaviour
     bool chamDat;
     int doubleJump = 2;
 
-    private void Awake()
-    {
-       
-    }
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()

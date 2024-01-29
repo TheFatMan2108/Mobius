@@ -28,7 +28,7 @@ public class Menu_inGame : MonoBehaviour
 
     public void choiLai()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("LV1");
         m_Menu_endGame.SetActive(false);
         Time.timeScale = 1.0f;  
     }

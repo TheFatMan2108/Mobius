@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnWeapon : MonoBehaviour
 {
-    [SerializeField] GameObject weapon;
     [SerializeField] GameObject Skill;
+    public static float damageWeapon;
    
     Weapon Info;
     public static bool casSkill = false;
@@ -14,8 +14,11 @@ public class SpawnWeapon : MonoBehaviour
        
         Info = new Weapon();
         JsonUtility.FromJsonOverwrite(PlayerPrefs.GetString("WEAPON"),Info);
-        weapon.SetActive(true);
-        weapon.transform.GetComponent<SpriteRenderer>().sprite = Info.imgWeapon;
+        transform.gameObject.SetActive(true);
+        transform.GetComponent<SpriteRenderer>().sprite = Info.imgWeapon;
+        damageWeapon = Info.damegeWeapon;
+        Debug.Log("gay damage len quai 1 :  "+ damageWeapon);
+        Debug.Log("TEN WEAPON 1 :  "+ Info.NameWeapon);
         
     }
 
