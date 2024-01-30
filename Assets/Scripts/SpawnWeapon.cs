@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,13 +31,18 @@ public class SpawnWeapon : MonoBehaviour
     {
        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (!casSkill)
-            {
-               Instantiate(Skill, transform.position, Quaternion.identity, transform);
-                AudioManager.instance.PlaySFX("Spell");
-                casSkill = true;
-            }
+            SkillSpawn();
         }
         
+    }
+
+    public void SkillSpawn()
+    {
+        if (!casSkill)
+        {
+            Instantiate(Skill, transform.position, Quaternion.identity, transform);
+            AudioManager.instance.PlaySFX("Spell");
+            casSkill = true;
+        }
     }
 }
