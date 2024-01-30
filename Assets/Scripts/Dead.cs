@@ -26,7 +26,7 @@ public class Dead : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Moster") || collision.CompareTag("bay"))
+        if (collision.CompareTag("Moster") || collision.CompareTag("bay")||collision.CompareTag("fire"))
         {
             if (animator.GetBool("runDead"))
             {

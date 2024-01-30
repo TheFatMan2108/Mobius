@@ -8,6 +8,12 @@ public class ControlAdudio : MonoBehaviour
     [SerializeField] Slider MBG_sl, SFX_sl;
     [SerializeField] GameObject paren;
 
+
+    private void Awake()
+    {
+        MBG_sl.value = AudioManager.instance.MBG_temp.volume;
+        SFX_sl.value = AudioManager.instance.SFX_temp.volume;
+    }
     public void ControlMBG()
     {
         AudioManager.instance.MBG_temp.volume = MBG_sl.value;
