@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SpawnWeapon : MonoBehaviour
 {
@@ -29,10 +30,7 @@ public class SpawnWeapon : MonoBehaviour
     }
     private void Update()
     {
-       if (Input.GetKeyDown(KeyCode.E))
-        {
-            SkillSpawn();
-        }
+      
         
     }
 
@@ -43,6 +41,14 @@ public class SpawnWeapon : MonoBehaviour
             Instantiate(Skill, transform.position, Quaternion.identity, transform);
             AudioManager.instance.PlaySFX("Spell");
             casSkill = true;
+        }
+    }
+
+  void  OnAttack(InputValue input)
+    {
+        if (input.isPressed)
+        {
+            SkillSpawn();
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class move : MonoBehaviour
@@ -33,17 +34,33 @@ public class move : MonoBehaviour
         {
             buttonSkill.SetActive(false);
         }
+        
+    }
+
+    private void Start()
+    {
+        Application.targetFrameRate = 50;
     }
     void Update()
     {
         huong = transform.localScale.x;
         
-        ngang = inputLeftRight();
+       
         rb.velocity = new Vector2(ngang * tocDo, rb.velocity.y);
         Flip();
         
         doubleJumpF();
-        if (toJump() && chamDat)
+      
+    }
+
+    void OnMove(InputValue input)
+    {
+        ngang = input.Get<Vector2>().x;
+    }
+
+    void OnJump(InputValue input)
+    {
+        if (input.isPressed && chamDat)
         {
             animator.SetBool("isJump", true);
             rb.velocity = new Vector2(rb.velocity.x, nhayCao);
@@ -51,62 +68,6 @@ public class move : MonoBehaviour
             AudioManager.instance.PlaySFX("jump");
 
         }
-    }
-
-    private bool toJump()
-    {
-        if (!isJump)
-        {
-            return Input.GetButtonDown("Jump");
-        }
-        else
-        {
-            countJumpButton--;
-            return countJumpButton>=0 ? true : false;
-        }
-    }
-
-    private float inputLeftRight()
-    {
-        if (!visualControl)
-        {
-            return Input.GetAxisRaw("Horizontal");
-        }
-        else
-        {
-            return ngang;
-        }
-    }
-
-    public void downKeyJump()
-    {
-        
-        isJump = true;
-        
-        Debug.Log(chamDat+" ok1");
-    }
-    public void upKeyJump()
-    {
-        isJump = false;
-        countJumpButton = 1;
-    }
-
-    public void downKeyLeft()
-    {
-        visualControl = true;
-        ngang = -1;
-    }
-
-    public void downKeyRight()
-    {
-        visualControl = true;
-        ngang = 1;
-    }
-
-    public void upKey()
-    {
-        visualControl = false;
-       
     }
 
     private void doubleJumpF()
