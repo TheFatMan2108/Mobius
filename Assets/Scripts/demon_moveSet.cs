@@ -78,8 +78,8 @@ public class demon_moveSet : MonoBehaviour
             Instantiate(brurning, new Vector3(transform.position.x, transform.position.y * 15f), Quaternion.identity, transform);
             AudioManager.instance.PlayMBG("theme");
             AudioManager.instance.PlaySFX("dmScream");
-            PanelWin.SetActive(true);
-            gameObject.SetActive(false);
+            animator.Play("Demon_dead");
+           
         }
     }
 
@@ -101,4 +101,10 @@ public class demon_moveSet : MonoBehaviour
         AudioManager.instance.PlaySFX("dmFlaping");
     }
 
+    public void Dead()
+    {
+        PanelWin.SetActive(true);
+        gameObject.SetActive(false);
+    }
 }
+
